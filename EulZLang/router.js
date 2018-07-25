@@ -43,6 +43,42 @@ module.exports = function(app) {
 		);		
 	});
 	
+	//getLocationLcd 위치정보 대분류 가지고 오기
+	app.post('/getLocationLcd', urlencodedParser, function(req, res) {
+		var data = "";
+		var ret = require('./js_server/EZL0020_SERVER').getLocationLcd(
+			function callback(locationLnm) {
+				res.status(200).send({"locationLnm" : locationLnm});
+			}
+		);		
+	});
+
+	/*장소등록 insert */
+	app.post('/insertPlace', urlencodedParser, function(req, res) {
+
+		var RSTR_ID	=	req.body.RSTR_ID;
+		var RSTR_NM	=	req.body.RSTR_NM;
+		var ADDR1	=	req.body.ADDR1;
+		var ADDR2	=	req.body.ADDR2;
+		var ADDR3	=	req.body.ADDR3;
+		var ADDR4	=	req.body.ADDR4;
+		var RSTR_NCNM	=	req.body.RSTR_NCNM;
+		var GG_LCT	=	req.body.GG_LCT;
+		var NV_LCT	=	req.body.NV_LCT;
+		var MAIN_FOOD_NM	=	req.body.MAIN_FOOD_NM;
+		var SEC_MENU_NM	=	req.body.SEC_MENU_NM;
+		var CMPN_RSTR_YN	=	req.body.CMPN_RSTR_YN;
+		var PRC_A_PRSN	=	req.body.PRC_A_PRSN;
+		var REG_YMD	=	req.body.REG_YMD;
+		
+		require('./js_server/EZL0020_SERVER').insertPlace(RSTR_ID,	RSTR_NM,	ADDR1,	ADDR2,	ADDR3,	ADDR4,	RSTR_NCNM,	GG_LCT,	NV_LCT,	MAIN_FOOD_NM,	SEC_MENU_NM,	CMPN_RSTR_YN,	PRC_A_PRSN,	REG_YMD,				
+			function callback(result) {
+				res.status(200).send({"result" : result});
+			}
+		); 			
+	});
+	
+	
 	app.get('/main', function(req, res) {
 		res.render('html/main.html');
 	});

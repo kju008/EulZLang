@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>EZL0020 을지랑 등록화면 </title>
+
+<style>
+div.blueTable {
+  border: 1px solid #1C6EA4;
+  background-color: #EEEEEE;
+  width: 100%;
+  height: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+.divTable.blueTable .divTableCell, .divTable.blueTable .divTableHead {
+  border: 1px solid #AAAAAA;
+  padding: 3px 2px;
+}
+.divTable.blueTable .divTableBody .divTableCell {
+  font-size: 13px;
+}
+.divTable.blueTable .divTableRow:nth-child(even) {
+  background: #D0E4F5;
+}
+.divTable.blueTable .divTableHeading {
+  background: #1C6EA4;
+  background: -moz-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: -webkit-linear-gradient(top, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  background: linear-gradient(to bottom, #5592bb 0%, #327cad 66%, #1C6EA4 100%);
+  border-bottom: 2px solid #444444;
+}
+.divTable.blueTable .divTableHeading .divTableHead {
+  font-size: 13px;
+  font-weight: bold;
+  color: #FFFFFF;
+  border-left: 2px solid #D0E4F5;
+}
+.divTable.blueTable .divTableHeading .divTableHead:first-child {
+  border-left: none;
+}
+
+.blueTable .tableFootStyle {
+  font-size: 14px;
+  font-weight: bold;
+  color: #FFFFFF;
+  background: #D0E4F5;
+  background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+  border-top: 2px solid #444444;
+}
+.blueTable .tableFootStyle {
+  font-size: 14px;
+}
+.blueTable .tableFootStyle .links {
+	 text-align: right;
+}
+.blueTable .tableFootStyle .links a{
+  display: inline-block;
+  background: #1C6EA4;
+  color: #FFFFFF;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+.blueTable.outerTableFooter {
+  border-top: none;
+}
+.blueTable.outerTableFooter .tableFootStyle {
+  padding: 3px 5px; 
+}
+/* DivTable.com */
+.divTable{ display: table; }
+.divTableRow { display: table-row; }
+.divTableHeading { display: table-header-group;}
+.divTableCell, .divTableHead { display: table-cell;}
+.divTableHeading { display: table-header-group;}
+.divTableFoot { display: table-footer-group;}
+.divTableBody { display: table-row-group;}
+
+
+
+span.star-prototype, span.star-prototype > * {
+    height: 16px; 
+    background: url(/images/favr_star.png) 0 -16px repeat-x;
+    width: 80px;
+    display: inline-block;
+}
+ 
+span.star-prototype > * {
+    background-position: 0 0;
+    max-width:80px; 
+}
+
+.img_image{
+	float: left;
+    width:100px;
+	hegith:100px;
+}
+	
+</style>
+</head>
+<body>
+<div class="divTable blueTable">
+<div class="divTableHeading">
+<div class="divTableRow">
+<div class="divTableHead">사진선택  <input type=file name=file_image></div>
+</div>
+</div>
+<div class="divTableBody">
+	<div class="divTableRow">
+		<div class="divTableCell">
+			<div name=div_images >
+				<img class=img_image  src="/images/대련집1.jpg" >
+			</div>
+			<div name=div_images >
+				<img class=img_image  src="/images/대련집2.jpg" >
+			</div>	
+			<div name=div_comment>대련집 너무 맛있다. 하루 3번 먹었으면 좋겠다. </div>
+		</div>
+	</div>
+	<div class="divTableRow">
+		<div class="divTableCell">
+		
+			<select id="sl_addr1">
+				<option >서울</option>
+			</select>
+			<!-- 중분류 -->
+			<select id="sl_addr2">
+				<option >중구</option>
+			</select>
+		
+			<!-- 소분류 -->
+			<select id="sl_addr3">
+				<option >관철동</option>
+			</select>
+			<input type=text name=txt_RSTR_NM value="상호명입력요">
+		</div>
+	</div>
+	<div class="divTableRow">
+		<div class="divTableCell" id=div_FAVR_RT>
+			<span name=sp_FAVR_RT>평점</span>
+			<select id="sl_FAVR_RT" onchange="Fn_getFavrRtStar()">
+				<option >5</option>
+				<option >4.5</option>
+				<option >4</option>
+				<option >3.5</option>
+				<option >3</option>
+				<option >2.5</option>
+				<option >2</option>
+				<option >1.5</option>
+				<option >1</option>
+			</select>
+		</div>
+	</div>
+</div>
+</div>
+<div class="blueTable outerTableFooter">
+<div class="tableFootStyle">
+<div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+</div>
+</div>
+<div id="div_location" class="div_location">
+	div_location
+	<!-- 대분류 -->
+
+</div>
+
+<!-- 
+
+TB_EZL002_AB			
+한글컬럼명	영문컬럼명	속성	부연설명
+음식점ID	RSTR_ID	char(8)	not null
+음식점명	RSTR_NM	varchar(100)	null
+장소1	ADDR1	varchar(20)	null
+장소2	ADDR2	varchar(20)	null
+장소3	ADDR3	varchar(20)	null
+장소4	ADDR4	varchar(20)	null
+별칭	RSTR_NCNM	varchar(100)	null
+구글위치정보	GG_LCT	varchar(100)	null
+네이버위치정보	NV_LCT	varchar(100)	null
+주메뉴	MAIN_FOOD_NM	varchar(100)	null
+부메뉴	SEC_MENU_NM	varchar(100)	null
+회식추천장소YN	CMPN_RSTR_YN	char(1)	null
+1인 예상금액	PRC_A_PRSN	numeric(15,0)	null
+등록일자	REG_YMD	char(8)	null
+
+ -->
+<input type=button onclick=Fn_insertPlace() value="등록">
+
+음식점ID	<input class="inEzl0020" type=text id="txt_RSTR_ID" >
+음식점명	<input class="inEzl0020" type=text id="txt_RSTR_NM" >
+장소1	<input class="inEzl0020" type=text id="txt_ADDR1" >
+장소2	<input class="inEzl0020" type=text id="txt_ADDR2" >
+장소3	<input class="inEzl0020" type=text id="txt_ADDR3" >
+장소4	<input class="inEzl0020" type=text id="txt_ADDR4" >
+별칭	<input class="inEzl0020" type=text id="txt_RSTR_NCNM" >
+구글위치정보	<input class="inEzl0020" type=text id="txt_GG_LCT" >
+네이버위치정보	<input class="inEzl0020" type=text id="txt_NV_LCT" >
+주메뉴	<input class="inEzl0020" type=text id="txt_MAIN_FOOD_NM" >
+부메뉴	<input class="inEzl0020" type=text id="txt_SEC_MENU_NM" >
+회식추천장소YN	<input class="inEzl0020" type=text id="txt_CMPN_RSTR_YN" >
+1인 예상금액	<input class="inEzl0020" type=text id="txt_PRC_A_PRSN" >
+등록일자	<input class="inEzl0020" type=text id="txt_REG_YMD" >
+
+
+</body>
+<script src='/lib/jquery/jquery.min.js'></script>
+<script src='/lib/jquery/jquery.lazyload.min.js'></script>
+<script src='/js/EZL0020.js'></script>
+</html>
