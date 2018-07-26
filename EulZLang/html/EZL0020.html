@@ -104,12 +104,24 @@ span.star-prototype > * {
 <div class="divTable blueTable">
 <div class="divTableHeading">
 <div class="divTableRow">
-<div class="divTableHead">사진선택  <input type=file name=file_image></div>
+<div class="divTableHead">
+	<button id=bt_insert>등록</button>
 </div>
 </div>
 <div class="divTableBody">
+
 	<div class="divTableRow">
 		<div class="divTableCell">
+		</div>
+	</div>
+	<div class="divTableRow">
+		<div class="divTableCell">
+		사진선택  <input type=file name=file_image></div>
+		</div>
+	</div>
+	<!-- 한줄씩 start-->
+	<div class="divTableRow">
+		<div class="divTableCell" >
 			<div name=div_images >
 				<img class=img_image  src="/images/대련집1.jpg" >
 			</div>
@@ -118,7 +130,8 @@ span.star-prototype > * {
 			</div>	
 			<div name=div_comment>대련집 너무 맛있다. 하루 3번 먹었으면 좋겠다. </div>
 		</div>
-	</div>
+	</div>	
+	<!-- 한줄씩 end-->
 	<div class="divTableRow">
 		<div class="divTableCell">
 		
@@ -157,31 +170,20 @@ span.star-prototype > * {
 	<div class="divTableRow">
 		<div class="divTableCell" >
 		회식장소여부YN
-			<select id="sl_FAVR_RT" onchange="Fn_getFavrRtStar()">
+			<select id="sl_DINNER_YN" >
 				<option >Y</option>
-				<option >4.5</option>
-				<option >4</option>
-				<option >3.5</option>
-				<option >3</option>
-				<option >2.5</option>
-				<option >2</option>
-				<option >1.5</option>
-				<option >1</option>
+				<option >N</option>
+			</select>
+
+		꾸워주는가?
+			<select id="sl_COOKING_YN" >
+				<option >Y</option>
+				<option >N</option>
 			</select>
 		</div>
 	</div>	
 	<!-- 한줄씩 end-->
 </div>
-</div>
-<div class="blueTable outerTableFooter">
-<div class="tableFootStyle">
-<div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
-</div>
-</div>
-<div id="div_location" class="div_location">
-	div_location
-	<!-- 대분류 -->
-
 </div>
 
 <!-- 
